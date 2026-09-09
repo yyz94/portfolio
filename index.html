@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yu Yu Zin — Senior Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDECE4;
+    --paper-dim:#E3E1D6;
+    --ink:#17213A;
+    --ink-soft:#54607A;
+    --line:#C7C3B3;
+    --accent:#1F6F63;
+    --accent-soft:#DCEAE5;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --disp: 'Space Grotesk', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      linear-gradient(var(--paper) 0 0),
+      repeating-linear-gradient(0deg, transparent 0 39px, rgba(23,33,58,0.045) 39px 40px),
+      repeating-linear-gradient(90deg, transparent 0 39px, rgba(23,33,58,0.045) 39px 40px);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--accent-soft);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  /* ===== NAV ===== */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,236,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-name{
+    font-family:var(--disp); font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
+  }
+  .nav-links{display:flex; gap:28px; font-size:0.92rem;}
+  .nav-links a{color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .15s, color .15s;}
+  .nav-links a:hover{color:var(--ink); border-color:var(--accent);}
+  .nav-toggle{display:none; background:none; border:1px solid var(--line); border-radius:4px; padding:6px 10px; font-family:var(--mono); font-size:0.85rem; cursor:pointer;}
+
+  @media (max-width:720px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; gap:0; padding:6px 32px 14px;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:10px 0; border-bottom:1px solid var(--line);}
+    .nav-toggle{display:inline-block;}
+  }
+
+  /* ===== HERO ===== */
+  section.hero{padding:88px 0 72px; border-bottom:1px solid var(--line);}
+
+  .hero-tag{
+    font-family:var(--mono); font-size:0.82rem; color:var(--accent);
+    display:inline-flex; align-items:center; gap:8px; margin-bottom:22px;
+  }
+  .hero-tag .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block;}
+
+  h1.hero-title{
+    font-family:var(--disp); font-weight:600;
+    font-size:clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height:1.12; letter-spacing:-0.01em;
+    max-width:15ch;
+  }
+  .hero-sub{
+    margin-top:22px; max-width:52ch; color:var(--ink-soft); font-size:1.05rem;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--sans); font-size:0.92rem; font-weight:500;
+    padding:12px 22px; border-radius:2px; border:1px solid var(--ink);
+    display:inline-block; transition:background .15s, color .15s;
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{background:var(--accent); border-color:var(--accent);}
+  .btn-line{border:1px solid var(--line); color:var(--ink);}
+  .btn-line:hover{border-color:var(--ink);}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:64px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:40px; gap:20px; flex-wrap:wrap;
+  }
+  h2.section-title{
+    font-family:var(--disp); font-weight:600; font-size:1.7rem; letter-spacing:-0.01em;
+  }
+  .section-note{font-family:var(--mono); font-size:0.8rem; color:var(--ink-soft);}
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:56px;}
+  @media (max-width:780px){.about-grid{grid-template-columns:1fr;}}
+  .about-body p{max-width:58ch; color:var(--ink-soft); font-size:1rem;}
+  .about-body p + p{margin-top:16px;}
+  .spec-list{border-top:1px solid var(--line);}
+  .spec-row{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:14px 0; border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .spec-row .k{color:var(--ink-soft);}
+  .spec-row .v{font-family:var(--mono); text-align:right;}
+
+  /* ===== SKILLS ===== */
+  .skill-row{
+    display:grid; grid-template-columns:160px 1fr; gap:24px;
+    padding:18px 0; border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .skill-row:first-child{border-top:1px solid var(--line);}
+  @media (max-width:600px){.skill-row{grid-template-columns:1fr; gap:8px;}}
+  .skill-cat{font-size:0.95rem; color:var(--ink-soft); padding-top:2px;}
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:var(--mono); font-size:0.8rem;
+    border:1px solid var(--line); padding:5px 10px; border-radius:2px;
+    background:var(--paper-dim);
+  }
+
+  /* ===== PROJECTS ===== */
+  .project{
+    display:grid; grid-template-columns:64px 1fr; gap:24px;
+    padding:36px 0; border-bottom:1px solid var(--line);
+  }
+  .project:first-child{border-top:1px solid var(--line);}
+  @media (max-width:640px){.project{grid-template-columns:1fr;}}
+  .project-icon{
+    width:44px; height:44px; border:1px solid var(--line); border-radius:4px;
+    display:flex; align-items:center; justify-content:center; color:var(--accent);
+    background:var(--paper-dim);
+  }
+  .project-icon svg{width:22px; height:22px;}
+  .project-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
+  }
+  h3.project-title{font-family:var(--disp); font-weight:600; font-size:1.2rem;}
+  .project-org{font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft);}
+  .project-desc{margin-top:10px; max-width:66ch; color:var(--ink-soft); font-size:0.96rem;}
+  .stack-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+
+  .carousel{
+    position:relative; margin-top:16px; border:1px solid var(--line); border-radius:3px;
+    overflow:hidden; background:#fff;
+  }
+  .carousel-view{position:relative; width:100%; aspect-ratio:16/10; background:var(--paper-dim);}
+  .carousel-slide{
+    position:absolute; inset:0; opacity:0; visibility:hidden;
+    transition:opacity .25s ease;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .carousel-slide.active{opacity:1; visibility:visible;}
+  .carousel-slide img{display:block; max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;}
+  .carousel-slide svg{display:block; width:100%; height:100%;}
+  .shot .tag,
+  .carousel-slide .tag{
+    position:absolute; top:10px; left:10px; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.03em;
+    background:rgba(23,33,58,0.78); color:var(--paper); padding:3px 8px; border-radius:2px; z-index:2;
+  }
+  .car-btn{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    width:34px; height:34px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(23,33,58,0.72); color:#fff; font-family:var(--sans); font-size:1.1rem; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .15s;
+  }
+  .car-btn:hover{background:var(--accent);}
+  .car-btn.prev{left:10px;}
+  .car-btn.next{right:10px;}
+  .car-dots{
+    position:absolute; bottom:10px; left:50%; transform:translateX(-50%); z-index:3;
+    display:flex; gap:7px; padding:5px 9px; background:rgba(23,33,58,0.35); border-radius:20px;
+  }
+  .car-dot{
+    width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.55); border:none; cursor:pointer; padding:0;
+  }
+  .car-dot.active{background:#fff;}
+  .car-count{
+    position:absolute; bottom:12px; right:12px; z-index:3; font-family:var(--mono); font-size:0.68rem;
+    color:rgba(255,255,255,0.9); background:rgba(23,33,58,0.5); padding:2px 7px; border-radius:10px;
+  }
+
+  .project-bullets{margin-top:14px; padding-left:18px; color:var(--ink-soft); font-size:0.92rem;}
+  .project-bullets li{margin-bottom:5px;}
+
+  /* ===== EXPERIENCE ===== */
+  .exp-item{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding:28px 0; border-bottom:1px solid var(--line);
+    border-left:2px solid var(--line); padding-left:24px; margin-left:2px;
+  }
+  .exp-item:first-child{border-top:1px solid var(--line);}
+  @media (max-width:640px){.exp-item{grid-template-columns:1fr; gap:6px;}}
+  .exp-period{font-family:var(--mono); font-size:0.8rem; color:var(--ink-soft); padding-top:3px;}
+  .exp-role{font-family:var(--disp); font-weight:600; font-size:1.08rem;}
+  .exp-org{color:var(--ink-soft); font-size:0.92rem; margin-top:2px;}
+  .exp-bullets{margin-top:12px; padding-left:18px; font-size:0.92rem; color:var(--ink-soft);}
+  .exp-bullets li{margin-bottom:5px;}
+
+  /* ===== CONTACT ===== */
+  .contact-inner{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap;
+  }
+  h2.contact-title{
+    font-family:var(--disp); font-weight:600; font-size:clamp(1.7rem,3.6vw,2.6rem);
+    max-width:14ch; letter-spacing:-0.01em;
+  }
+  .contact-links{display:flex; flex-direction:column; gap:10px; font-family:var(--mono); font-size:0.92rem;}
+  .contact-links a{border-bottom:1px solid var(--line); padding-bottom:2px; transition:border-color .15s;}
+  .contact-links a:hover{border-color:var(--accent); color:var(--accent);}
+
+  footer{padding:24px 0 40px; font-family:var(--mono); font-size:0.76rem; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Yu Yu Zin</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">menu</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-tag"><span class="dot"></span>Singapore · open to full-stack roles</div>
+        <p class="hero-sub">Senior Full Stack Developer with 8+ years shipping production systems in React.js, Next.js and TypeScript on the frontend, and PHP/Laravel with AWS on the backend — from fleet tracking to logistics, workforce and CRM platforms.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="#projects">View projects</a>
+          <a class="btn btn-line" href="https://www.linkedin.com/in/yuyuzin" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-line" href="mailto:yuyuzin.ucsy@gmail.com">Email me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="section-head"><h2 class="section-title">About</h2></div>
+        <div class="about-body">
+          <p>I'm a Senior Full Stack Developer with over 8 years building web applications and enterprise systems across GPS tracking, logistics, automotive and workforce management. My recent work centres on React.js, Next.js and TypeScript for the frontend, with PHP/Laravel, RESTful APIs and AWS on the backend and infrastructure side.</p>
+          <p>I've led development on multi-module platforms — fleet operations, CRM, warehouse and payroll systems — working closely with backend teams, designers and stakeholders, and mentoring junior developers along the way. I'm currently looking for senior full-stack role where I can keep building software that real operations teams depend on daily.</p>
+        </div>
+      </div>
+      <div class="spec-list">
+        <div class="spec-row"><span class="k">Experience</span><span class="v">8+ years</span></div>
+        <div class="spec-row"><span class="k">Based in</span><span class="v">Singapore</span></div>
+        <div class="spec-row"><span class="k">Focus</span><span class="v">React / Next.js / Laravel</span></div>
+        <div class="spec-row"><span class="k">Education</span><span class="v">B.C.Sc, 2014</span></div>
+        <div class="spec-row"><span class="k">Looking for</span><span class="v">Senior full-stack roles</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><h2 class="section-title">Skills</h2></div>
+
+      <div class="skill-row">
+        <div class="skill-cat">Frontend</div>
+        <div class="chips">
+          <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+          <span class="chip">JavaScript (ES6+)</span><span class="chip">Vue.js</span><span class="chip">jQuery</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Backend</div>
+        <div class="chips">
+          <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">RESTful APIs</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Database</div>
+        <div class="chips">
+          <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">MariaDB</span>
+          <span class="chip">MongoDB</span><span class="chip">Redis</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Cloud & DevOps</div>
+        <div class="chips">
+          <span class="chip">AWS EC2</span><span class="chip">AWS S3</span><span class="chip">AWS RDS</span>
+          <span class="chip">CloudFront</span><span class="chip">Docker</span><span class="chip">Linux</span>
+          <span class="chip">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Projects</h2>
+        <span class="section-note">production systems, sanitized for confidentiality</span>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 16h1l1.5-4h9L16 16h1a2 2 0 012 2v1a1 1 0 01-1 1h-1a2 2 0 11-4 0H8a2 2 0 11-4 0H3a1 1 0 01-1-1v-3a2 2 0 011-2z"/><circle cx="6" cy="19" r="1.4"/><circle cx="16" cy="19" r="1.4"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Fleet Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">A vehicle tracking and fleet operations platform covering trip management, geofencing, reporting and notifications, built on a React.js frontend integrated with an ASP.NET backend.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+            <span class="chip">REST API</span><span class="chip">ASP.NET</span><span class="chip">MS SQL</span>
+          </div>
+          <div class="carousel">
+            <div class="carousel-view">
+              <div class="carousel-slide active"><img src="images/fleet-live-view.png" alt="Fleet live view map and vehicle list"></div>
+              <div class="carousel-slide"><img src="images/fleet-tracks.png" alt="Fleet trip playback and tracks"></div>
+              <div class="carousel-slide"><img src="images/fleet-dashboard.png" alt="Fleet dashboard with GPS status and events"></div>
+            </div>
+            <button class="car-btn prev" aria-label="Previous image">‹</button>
+            <button class="car-btn next" aria-label="Next image">›</button>
+            <div class="car-dots"></div>
+            <div class="car-count"></div>
+          </div>
+          <ul class="project-bullets">
+            <li>Built responsive, reusable UI components for vehicle tracking and trip management</li>
+            <li>Integrated REST APIs with the ASP.NET backend</li>
+            <li>Shipped geofencing, reporting and notification features</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l2-6h14l2 6"/><path d="M5 12h14v6H5z"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">MTM Automotive Platform</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">A CRM and automotive platform spanning customer engagement, eCommerce, car sales and rental, workshop service, financing and analytics — a Laravel-backed React application built across seven business modules.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+            <span class="chip">Laravel</span><span class="chip">PostgreSQL</span>
+          </div>
+          <div class="carousel">
+            <div class="carousel-view">
+              <div class="carousel-slide active"><img src="images/mtm-dashboard.png" alt="MTM CRM workshop dashboard"></div>
+              <div class="carousel-slide"><img src="images/mtm-packages.png" alt="MTM CRM packages list"></div>
+              <div class="carousel-slide"><img src="images/mtm-jobs.png" alt="MTM CRM workshop jobs"></div>
+              <div class="carousel-slide"><img src="images/mtm-rewards.png" alt="MTM CRM rewards catalog"></div>
+            </div>
+            <button class="car-btn prev" aria-label="Previous image">‹</button>
+            <button class="car-btn next" aria-label="Next image">›</button>
+            <div class="car-dots"></div>
+            <div class="car-count"></div>
+          </div>
+          <ul class="project-bullets">
+            <li>Built reusable UI components across CRM, sales, workshop and inventory modules</li>
+            <li>Integrated REST APIs with the Laravel backend</li>
+            <li>Worked with stakeholders on booking, notification and payment workflows</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M3 7l9-4 9 4"/><path d="M8 11v5M12 11v5M16 11v5"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Cable & Warehouse Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">An enterprise application for cable manufacturing and warehouse operations, covering inventory, factory production tracking, quality assurance, invoicing and a client portal for order tracking.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span><span class="chip">MySQL</span>
+          </div>
+          <div class="carousel">
+            <div class="carousel-view">
+              <div class="carousel-slide active"><img src="images/cable-dashboard.png" alt="Admin project management dashboard"></div>
+              <div class="carousel-slide"><img src="images/cable-drums.png" alt="Cable drum summary and tracking"></div>
+              <div class="carousel-slide"><img src="images/cable-inventory.png" alt="Project inventory overview"></div>
+            </div>
+            <button class="car-btn prev" aria-label="Previous image">‹</button>
+            <button class="car-btn next" aria-label="Next image">›</button>
+            <div class="car-dots"></div>
+            <div class="car-count"></div>
+          </div>
+          <ul class="project-bullets">
+            <li>Built user and role management, and order/change-request workflows</li>
+            <li>Delivered inventory, warehouse and production-tracking modules</li>
+            <li>Built a client portal for order tracking and account management</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="1"/><path d="M3 9h18"/><path d="M8 3v3M16 3v3"/><path d="M8 14l2 2 4-4"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">RET Tour Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">Digitized daily tour operations that previously ran on paper and spreadsheets — route planning, calendar-based job assignment, a driver mobile app and digital signature capture on completion.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
+            <span class="chip">MySQL</span><span class="chip">React Native</span>
+          </div>
+          <div class="carousel">
+            <div class="carousel-view">
+              <div class="carousel-slide active"><img src="images/ret-dashboard.png" alt="RET dashboard with tour and trip status"></div>
+              <div class="carousel-slide"><img src="images/ret-trips.png" alt="RET trips list and filters"></div>
+              <div class="carousel-slide"><img src="images/ret-reports.png" alt="RET tours and trips report"></div>
+            </div>
+            <button class="car-btn prev" aria-label="Previous image">‹</button>
+            <button class="car-btn next" aria-label="Next image">›</button>
+            <div class="car-dots"></div>
+            <div class="car-count"></div>
+          </div>
+          <ul class="project-bullets">
+            <li>Built customer, driver and job management, plus route and schedule planning</li>
+            <li>Shipped a driver mobile app for assigned jobs and navigation</li>
+            <li>Added digital signature capture and completion reporting</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1-3.5 4-5 7-5s6 1.5 7 5"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Egrade Workforce Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">A workforce, payroll and time-management platform for Singapore operations — clock-in/out, shift rostering, leave, payroll and Singapore statutory compliance (CPF, SDL, foreign worker levy, IR8A), with a companion mobile app.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
+            <span class="chip">MySQL</span><span class="chip">React Native</span>
+          </div>
+          <div class="carousel">
+            <div class="carousel-view">
+              <div class="carousel-slide active"><img src="images/egrade-dashboard.png" alt="Egrade dashboard with worker and attendance stats"></div>
+              <div class="carousel-slide"><img src="images/egrade-attendance.png" alt="Egrade time attendance weekly schedule"></div>
+              <div class="carousel-slide"><img src="images/egrade-payroll-posting.png" alt="Egrade TMS payroll posting setup"></div>
+              <div class="carousel-slide"><img src="images/egrade-payroll-calc.png" alt="Egrade payroll calculation history"></div>
+            </div>
+            <button class="car-btn prev" aria-label="Previous image">‹</button>
+            <button class="car-btn next" aria-label="Next image">›</button>
+            <div class="car-dots"></div>
+            <div class="car-count"></div>
+          </div>
+          <ul class="project-bullets">
+            <li>Built employee master, project assignment and shift/roster planning</li>
+            <li>Delivered payroll calculation, CPF/EZPay exports and GIRO bank files</li>
+            <li>Shipped a mobile app for employee clock-in/out and leave requests</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">GoGo Logistics Platform</h3>
+            <span class="project-org">rgo47</span>
+          </div>
+          <p class="project-desc">A logistics management platform for order processing, packaging management and real-time order tracking, with push notifications delivered to customers and staff via Firebase Cloud Messaging.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
+            <span class="chip">Firebase</span><span class="chip">MySQL</span><span class="chip">MongoDB</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Built order processing and real-time tracking UI in React.js</li>
+            <li>Integrated REST APIs with the Laravel backend</li>
+            <li>Implemented Firebase Cloud Messaging for real-time notifications</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">ERP System</h3>
+            <span class="project-org">rgo47</span>
+          </div>
+          <p class="project-desc">An enterprise resource planning system to streamline business operations, spanning product management, order processing, inventory control, warehouse management, purchasing and finance workflows.</p>
+          <div class="stack-row">
+            <span class="chip">Vue.js</span><span class="chip">Laravel</span><span class="chip">JavaScript</span>
+            <span class="chip">Firebase</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span>
+          </div>
+          <ul class="project-bullets">
+            <li>Built product management, order processing and inventory control modules</li>
+            <li>Developed warehouse management and purchasing workflows in Vue.js</li>
+            <li>Integrated Laravel REST APIs and Firebase Cloud Messaging for finance and stock alerts</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head"><h2 class="section-title">Experience</h2></div>
+
+      <div class="exp-item">
+        <div class="exp-period">2022 — 2026</div>
+        <div>
+          <div class="exp-role">Senior Web Developer (Full Stack)</div>
+          <div class="exp-org">MajuTech Pte. Ltd. — software, GPS tracking & systems integration</div>
+          <ul class="exp-bullets">
+            <li>Developed production applications in React.js, Next.js, TypeScript and Laravel/PHP</li>
+            <li>Built reusable, responsive frontend components and integrated them with backend REST APIs</li>
+            <li>Implemented dashboards, forms, reporting and notification workflows</li>
+            <li>Led developers, ran code reviews and mentored juniors; managed AWS deployment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2018 — 2021</div>
+        <div>
+          <div class="exp-role">Senior Web Developer (Full Stack)</div>
+          <div class="exp-org">rgo47 Myanmar Co. Ltd — leading online marketplace</div>
+          <ul class="exp-bullets">
+            <li>Built and maintained backend features for large-scale eCommerce applications</li>
+            <li>Designed and optimized database structures for business requirements</li>
+            <li>Developed transaction and custom CSV/Excel reports; maintained internal REST APIs</li>
+            <li>Led weekly team meetings and reported project progress to management</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-period">2014 — 2018</div>
+        <div>
+          <div class="exp-role">Web Developer</div>
+          <div class="exp-org">Novitee Co. Ltd — enterprise software (Myanmar branch of Novitee Pte. Ltd, Singapore)</div>
+          <ul class="exp-bullets">
+            <li>Developed and maintained mobile APIs and purchasing management systems</li>
+            <li>Implemented new features and enhancements based on business requirements</li>
+            <li>Handled system maintenance, bug fixes and database migration support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-inner">
+      <h2 class="contact-title">Let's work together.</h2>
+      <div class="contact-links">
+        <a href="mailto:yuyuzin.ucsy@gmail.com">yuyuzin.ucsy@gmail.com</a>
+        <a href="tel:+6583814010">+65 8381 4010</a>
+        <a href="https://www.linkedin.com/in/yuyuzin" target="_blank" rel="noopener">linkedin.com/in/yuyuzin</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Yu Yu Zin — Singapore · updated 2026</div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // --- placeholder screenshot mockups (swap these slots for real screenshots later) ---
+  function seededRand(seed){
+    return function(i){
+      const x = Math.sin(seed * 137.13 + i * 41.7) * 10000;
+      return x - Math.floor(x);
+    };
+  }
+
+  function mockupSVG(type, seed){
+    const w = 280, h = 168;
+    const r = seededRand(seed);
+    let c = '';
+    if (type === 'dashboard') {
+      c += `<rect x="0" y="0" width="46" height="${h}" fill="#EDECE4"/>`;
+      for (let i = 0; i < 4; i++) c += `<rect x="10" y="${20 + i * 32}" width="26" height="6" rx="1" fill="#C7C3B3"/>`;
+      c += `<rect x="56" y="10" width="66" height="28" rx="2" fill="#DCEAE5"/>`;
+      c += `<rect x="130" y="10" width="66" height="28" rx="2" fill="#fff" stroke="#C7C3B3"/>`;
+      c += `<rect x="204" y="10" width="64" height="28" rx="2" fill="#fff" stroke="#C7C3B3"/>`;
+      for (let i = 0; i < 7; i++) {
+        const bh = 14 + r(i) * 44;
+        c += `<rect x="${56 + i * 16}" y="${146 - bh}" width="10" height="${bh}" fill="#1F6F63" opacity="${0.5 + r(i + 9) * 0.4}"/>`;
+      }
+    } else if (type === 'table') {
+      c += `<rect x="0" y="0" width="${w}" height="16" fill="#EDECE4"/>`;
+      for (let i = 0; i < 5; i++) {
+        const y = 26 + i * 27;
+        c += `<circle cx="18" cy="${y + 7}" r="6" fill="${i % 3 === 0 ? '#1F6F63' : '#C7C3B3'}"/>`;
+        c += `<rect x="34" y="${y}" width="${90 + r(i) * 40}" height="6" rx="1" fill="#17213A" opacity="0.55"/>`;
+        c += `<rect x="34" y="${y + 11}" width="60" height="4" rx="1" fill="#C7C3B3"/>`;
+        c += `<rect x="222" y="${y + 3}" width="40" height="8" rx="4" fill="${i % 2 === 0 ? '#DCEAE5' : '#fff'}" stroke="#C7C3B3"/>`;
+      }
+    } else if (type === 'map') {
+      c += `<rect x="0" y="0" width="${w}" height="${h}" fill="#E3E1D6"/>`;
+      c += `<path d="M20 138 C 60 138, 50 90, 92 80 S 150 42, 130 22 S 222 12, 240 52 S 200 100, 232 128" stroke="#1F6F63" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+      c += `<circle cx="20" cy="138" r="5" fill="#17213A"/><circle cx="232" cy="128" r="5" fill="#17213A"/>`;
+      c += `<circle cx="92" cy="80" r="3.5" fill="#1F6F63"/><circle cx="130" cy="22" r="3.5" fill="#1F6F63"/>`;
+    } else if (type === 'form') {
+      c += `<rect x="0" y="0" width="${w}" height="16" fill="#EDECE4"/>`;
+      for (let i = 0; i < 4; i++) {
+        const y = 30 + i * 30;
+        c += `<rect x="20" y="${y}" width="${50 + r(i) * 30}" height="5" rx="1" fill="#C7C3B3"/>`;
+        c += `<rect x="20" y="${y + 9}" width="240" height="14" rx="2" fill="#fff" stroke="#C7C3B3"/>`;
+      }
+      c += `<rect x="200" y="150" width="60" height="16" rx="2" fill="#1F6F63"/>`;
+    }
+    return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="#fff"/>${c}</svg>`;
+  }
+
+  // fill placeholder slides with generated mockup SVGs (real-image slides are untouched)
+  document.querySelectorAll('.carousel-slide span[data-type]').forEach((el, i) => {
+    el.outerHTML = mockupSVG(el.dataset.type, i);
+  });
+
+  // carousel controls
+  document.querySelectorAll('.carousel').forEach((car) => {
+    const slides = Array.from(car.querySelectorAll('.carousel-slide'));
+    const dotsWrap = car.querySelector('.car-dots');
+    const countEl = car.querySelector('.car-count');
+    let idx = slides.findIndex(s => s.classList.contains('active'));
+    if (idx < 0) idx = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'car-dot' + (i === idx ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
+      dot.addEventListener('click', () => show(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function show(i) {
+      idx = (i + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle('active', j === idx));
+      dotsWrap.querySelectorAll('.car-dot').forEach((d, j) => d.classList.toggle('active', j === idx));
+      countEl.textContent = (idx + 1) + ' / ' + slides.length;
+    }
+
+    car.querySelector('.car-btn.prev').addEventListener('click', () => show(idx - 1));
+    car.querySelector('.car-btn.next').addEventListener('click', () => show(idx + 1));
+    show(idx);
+  });
+</script>
+
+</body>
+</html>
