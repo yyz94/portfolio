@@ -200,8 +200,18 @@
     color:rgba(255,255,255,0.9); background:rgba(23,33,58,0.5); padding:2px 7px; border-radius:10px;
   }
 
-  .project-bullets{margin-top:14px; padding-left:18px; color:var(--ink-soft); font-size:0.92rem;}
-  .project-bullets li{margin-bottom:5px;}
+  .carousel{display:none;}
+  .project-details{margin-top:22px; display:grid; gap:20px;}
+  .project-block h4{
+    font-family:var(--disp); font-weight:600; font-size:0.78rem;
+    letter-spacing:.08em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:10px;
+    padding-left:11px; border-left:2px solid var(--accent);
+  }
+  .project-block p{color:var(--ink-soft); font-size:0.92rem; line-height:1.65; margin-bottom:10px; max-width:72ch;}
+  .project-block ol,.project-block ul{padding-left:18px; color:var(--ink-soft); font-size:0.92rem; line-height:1.65;}
+  .project-block li{margin-bottom:8px;}
+  .project-block li strong{color:var(--ink); font-weight:600;}
 
   /* ===== EXPERIENCE ===== */
   .exp-item{
@@ -247,8 +257,7 @@
   .hero-ctas .btn{padding:13px 18px;}
   .section-note{letter-spacing:.06em; text-transform:uppercase;}
   .section-head{margin-bottom:32px;}
-  .section-title{position:relative;}
-  .section-title::before{content:'//'; margin-right:9px; color:var(--accent); font:500 .8em var(--mono);}
+  .section-title{position:relative; padding-left:14px; border-left:3px solid var(--accent);}
   #projects{background:rgba(227,225,214,.32);}
   .project{transition:opacity .25s ease, transform .25s ease;}
   .project.is-hidden{display:none;}
@@ -307,8 +316,8 @@
     <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -379,240 +388,13 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 class="section-title">Selected Projects</h2>
-      </div>
-      <div class="filter-bar" aria-label="Filter projects">
-        <span class="filter-label">Browse by</span>
-        <button class="filter-btn active" type="button" data-filter="all">All work</button>
-        <button class="filter-btn" type="button" data-filter="operations">Operations</button>
-        <button class="filter-btn" type="button" data-filter="platforms">Platforms</button>
-        <button class="filter-btn" type="button" data-filter="workforce">Workforce</button>
-      </div>
-
-      <div class="project" data-category="operations">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 16h1l1.5-4h9L16 16h1a2 2 0 012 2v1a1 1 0 01-1 1h-1a2 2 0 11-4 0H8a2 2 0 11-4 0H3a1 1 0 01-1-1v-3a2 2 0 011-2z"/><circle cx="6" cy="19" r="1.4"/><circle cx="16" cy="19" r="1.4"/></svg>
-        </div>
-        <div>
-          <div class="project-head">
-            <h3 class="project-title">Fleet Management System</h3>
-            <span class="project-org">MajuTech Pte. Ltd.</span>
-          </div>
-          <p class="project-desc">A vehicle tracking and fleet operations platform covering trip management, geofencing, reporting and notifications, built on a React.js frontend integrated with an ASP.NET backend.</p>
-          <div class="stack-row">
-            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
-            <span class="chip">REST API</span><span class="chip">ASP.NET</span><span class="chip">MS SQL</span>
-          </div>
-          <div class="carousel">
-            <div class="carousel-view">
-              <div class="carousel-slide active"><img src="images/fleet-live-view.png" alt="Fleet live view map and vehicle list"></div>
-              <div class="carousel-slide"><img src="images/fleet-tracks.png" alt="Fleet trip playback and tracks"></div>
-              <div class="carousel-slide"><img src="images/fleet-dashboard.png" alt="Fleet dashboard with GPS status and events"></div>
-            </div>
-            <button class="car-btn prev" aria-label="Previous image">‹</button>
-            <button class="car-btn next" aria-label="Next image">›</button>
-            <div class="car-dots"></div>
-            <div class="car-count"></div>
-          </div>
-          <ul class="project-bullets">
-            <li>Built responsive, reusable UI components for vehicle tracking and trip management</li>
-            <li>Integrated REST APIs with the ASP.NET backend</li>
-            <li>Shipped geofencing, reporting and notification features</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" data-category="platforms">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l2-6h14l2 6"/><path d="M5 12h14v6H5z"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg>
-        </div>
-        <div>
-          <div class="project-head">
-            <h3 class="project-title">MTM Automotive Platform</h3>
-            <span class="project-org">MajuTech Pte. Ltd.</span>
-          </div>
-          <p class="project-desc">A CRM and automotive platform spanning customer engagement, eCommerce, car sales and rental, workshop service, financing and analytics — a Laravel-backed React application built across seven business modules.</p>
-          <div class="stack-row">
-            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
-            <span class="chip">Laravel</span><span class="chip">PostgreSQL</span>
-          </div>
-          <div class="carousel">
-            <div class="carousel-view">
-              <div class="carousel-slide active"><img src="images/mtm-dashboard.png" alt="MTM CRM workshop dashboard"></div>
-              <div class="carousel-slide"><img src="images/mtm-packages.png" alt="MTM CRM packages list"></div>
-              <div class="carousel-slide"><img src="images/mtm-jobs.png" alt="MTM CRM workshop jobs"></div>
-              <div class="carousel-slide"><img src="images/mtm-rewards.png" alt="MTM CRM rewards catalog"></div>
-            </div>
-            <button class="car-btn prev" aria-label="Previous image">‹</button>
-            <button class="car-btn next" aria-label="Next image">›</button>
-            <div class="car-dots"></div>
-            <div class="car-count"></div>
-          </div>
-          <ul class="project-bullets">
-            <li>Built reusable UI components across CRM, sales, workshop and inventory modules</li>
-            <li>Integrated REST APIs with the Laravel backend</li>
-            <li>Worked with stakeholders on booking, notification and payment workflows</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" data-category="operations">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M3 7l9-4 9 4"/><path d="M8 11v5M12 11v5M16 11v5"/></svg>
-        </div>
-        <div>
-          <div class="project-head">
-            <h3 class="project-title">Cable & Warehouse Management System</h3>
-            <span class="project-org">MajuTech Pte. Ltd.</span>
-          </div>
-          <p class="project-desc">An enterprise application for cable manufacturing and warehouse operations, covering inventory, factory production tracking, quality assurance, invoicing and a client portal for order tracking.</p>
-          <div class="stack-row">
-            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span><span class="chip">MySQL</span>
-          </div>
-          <div class="carousel">
-            <div class="carousel-view">
-              <div class="carousel-slide active"><img src="images/cable-dashboard.png" alt="Admin project management dashboard"></div>
-              <div class="carousel-slide"><img src="images/cable-drums.png" alt="Cable drum summary and tracking"></div>
-              <div class="carousel-slide"><img src="images/cable-inventory.png" alt="Project inventory overview"></div>
-            </div>
-            <button class="car-btn prev" aria-label="Previous image">‹</button>
-            <button class="car-btn next" aria-label="Next image">›</button>
-            <div class="car-dots"></div>
-            <div class="car-count"></div>
-          </div>
-          <ul class="project-bullets">
-            <li>Built user and role management, and order/change-request workflows</li>
-            <li>Delivered inventory, warehouse and production-tracking modules</li>
-            <li>Built a client portal for order tracking and account management</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" data-category="operations">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="1"/><path d="M3 9h18"/><path d="M8 3v3M16 3v3"/><path d="M8 14l2 2 4-4"/></svg>
-        </div>
-        <div>
-          <div class="project-head">
-            <h3 class="project-title">RET Tour Management System</h3>
-            <span class="project-org">MajuTech Pte. Ltd.</span>
-          </div>
-          <p class="project-desc">Digitized daily tour operations that previously ran on paper and spreadsheets — route planning, calendar-based job assignment, a driver mobile app and digital signature capture on completion.</p>
-          <div class="stack-row">
-            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
-            <span class="chip">MySQL</span><span class="chip">React Native</span>
-          </div>
-          <div class="carousel">
-            <div class="carousel-view">
-              <div class="carousel-slide active"><img src="images/ret-dashboard.png" alt="RET dashboard with tour and trip status"></div>
-              <div class="carousel-slide"><img src="images/ret-trips.png" alt="RET trips list and filters"></div>
-              <div class="carousel-slide"><img src="images/ret-reports.png" alt="RET tours and trips report"></div>
-            </div>
-            <button class="car-btn prev" aria-label="Previous image">‹</button>
-            <button class="car-btn next" aria-label="Next image">›</button>
-            <div class="car-dots"></div>
-            <div class="car-count"></div>
-          </div>
-          <ul class="project-bullets">
-            <li>Built customer, driver and job management, plus route and schedule planning</li>
-            <li>Shipped a driver mobile app for assigned jobs and navigation</li>
-            <li>Added digital signature capture and completion reporting</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" data-category="workforce">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1-3.5 4-5 7-5s6 1.5 7 5"/></svg>
-        </div>
-        <div>
-          <div class="project-head">
-            <h3 class="project-title">Egrade Workforce Management System</h3>
-            <span class="project-org">MajuTech Pte. Ltd.</span>
-          </div>
-          <p class="project-desc">A workforce, payroll and time-management platform for Singapore operations — clock-in/out, shift rostering, leave, payroll and Singapore statutory compliance (CPF, SDL, foreign worker levy, IR8A), with a companion mobile app.</p>
-          <div class="stack-row">
-            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
-            <span class="chip">MySQL</span><span class="chip">React Native</span>
-          </div>
-          <div class="carousel">
-            <div class="carousel-view">
-              <div class="carousel-slide active"><img src="images/egrade-dashboard.png" alt="Egrade dashboard with worker and attendance stats"></div>
-              <div class="carousel-slide"><img src="images/egrade-attendance.png" alt="Egrade time attendance weekly schedule"></div>
-              <div class="carousel-slide"><img src="images/egrade-payroll-posting.png" alt="Egrade TMS payroll posting setup"></div>
-              <div class="carousel-slide"><img src="images/egrade-payroll-calc.png" alt="Egrade payroll calculation history"></div>
-            </div>
-            <button class="car-btn prev" aria-label="Previous image">‹</button>
-            <button class="car-btn next" aria-label="Next image">›</button>
-            <div class="car-dots"></div>
-            <div class="car-count"></div>
-          </div>
-          <ul class="project-bullets">
-            <li>Built employee master, project assignment and shift/roster planning</li>
-            <li>Delivered payroll calculation, CPF/EZPay exports and GIRO bank files</li>
-            <li>Shipped a mobile app for employee clock-in/out and leave requests</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" data-category="platforms">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
-        </div>
-        <div>
-          <div class="project-head">
-            <h3 class="project-title">GoGo Logistics Platform</h3>
-            <span class="project-org">rgo47</span>
-          </div>
-          <p class="project-desc">A logistics management platform for order processing, packaging management and real-time order tracking, with push notifications delivered to customers and staff via Firebase Cloud Messaging.</p>
-          <div class="stack-row">
-            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
-            <span class="chip">Firebase</span><span class="chip">MySQL</span><span class="chip">MongoDB</span>
-          </div>
-          <ul class="project-bullets">
-            <li>Built order processing and real-time tracking UI in React.js</li>
-            <li>Integrated REST APIs with the Laravel backend</li>
-            <li>Implemented Firebase Cloud Messaging for real-time notifications</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project" data-category="platforms">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
-        </div>
-        <div>
-          <div class="project-head">
-            <h3 class="project-title">ERP System</h3>
-            <span class="project-org">rgo47</span>
-          </div>
-          <p class="project-desc">An enterprise resource planning system to streamline business operations, spanning product management, order processing, inventory control, warehouse management, purchasing and finance workflows.</p>
-          <div class="stack-row">
-            <span class="chip">Vue.js</span><span class="chip">Laravel</span><span class="chip">JavaScript</span>
-            <span class="chip">Firebase</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span>
-          </div>
-          <ul class="project-bullets">
-            <li>Built product management, order processing and inventory control modules</li>
-            <li>Developed warehouse management and purchasing workflows in Vue.js</li>
-            <li>Integrated Laravel REST APIs and Firebase Cloud Messaging for finance and stock alerts</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="wrap">
       <div class="section-head"><h2 class="section-title">Experience</h2></div>
 
       <div class="exp-item">
-        <div class="exp-period">2022 — 2026</div>
+        <div class="exp-period">May 2022 — Aug 2026</div>
         <div>
           <div class="exp-role">Senior Web Developer (Full Stack)</div>
           <div class="exp-org">MajuTech Pte. Ltd. (Singapore) — software, GPS tracking & systems integration</div>
@@ -651,6 +433,460 @@
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+      <div class="filter-bar" aria-label="Filter projects">
+        <span class="filter-label">Browse by</span>
+        <button class="filter-btn active" type="button" data-filter="all">All work</button>
+        <button class="filter-btn" type="button" data-filter="operations">Operations</button>
+        <button class="filter-btn" type="button" data-filter="platforms">Platforms</button>
+        <button class="filter-btn" type="button" data-filter="workforce">Workforce</button>
+      </div>
+
+      <div class="project" data-category="operations">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 16h1l1.5-4h9L16 16h1a2 2 0 012 2v1a1 1 0 01-1 1h-1a2 2 0 11-4 0H8a2 2 0 11-4 0H3a1 1 0 01-1-1v-3a2 2 0 011-2z"/><circle cx="6" cy="19" r="1.4"/><circle cx="16" cy="19" r="1.4"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Fleet Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">A vehicle tracking and fleet operations platform covering trip management, geofencing, reporting and notifications, built on a React.js frontend integrated with an ASP.NET backend.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+            <span class="chip">REST API</span><span class="chip">ASP.NET</span><span class="chip">MS SQL</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Challenges</h4>
+              <p>Before the fleet platform, operations depended on scattered GPS tools and manual follow-up:</p>
+              <ol>
+                <li>Limited live visibility into vehicle location and trip status.</li>
+                <li>Geofence breaches and exceptions were hard to catch in time.</li>
+                <li>Trip history and reports had to be assembled by hand.</li>
+                <li>Drivers and operations staff were not notified of events quickly enough.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Core Functions</h4>
+              <ol>
+                <li><strong>Live Tracking:</strong> Map and list views of vehicles with current GPS status.</li>
+                <li><strong>Trip Management:</strong> Create, monitor and play back trips from start to completion.</li>
+                <li><strong>Geofencing:</strong> Zone alerts when vehicles enter or leave defined areas.</li>
+                <li><strong>Reporting:</strong> Operational reports on trips, events and vehicle activity.</li>
+                <li><strong>Notifications:</strong> Event alerts for operations teams when exceptions occur.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <ol>
+                <li><strong>React frontend:</strong> Built reusable tracking, trip and geofence UI on React.js, Next.js and TypeScript.</li>
+                <li><strong>API integration:</strong> Connected the interface to an ASP.NET backend and MS SQL data.</li>
+                <li><strong>Operations workflows:</strong> Shipped live view, trip playback, geofencing, reporting and notifications as one product.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ol>
+                <li><strong>Real-time visibility:</strong> Operations could see vehicle and trip status without switching tools.</li>
+                <li><strong>Faster exception handling:</strong> Geofence and event alerts reduced delayed responses.</li>
+                <li><strong>Less manual reporting:</strong> Trip history and reports were available from the same system.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-category="platforms">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l2-6h14l2 6"/><path d="M5 12h14v6H5z"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">MTM Automotive Platform</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">A CRM and automotive platform spanning customer engagement, eCommerce, car sales and rental, workshop service, financing and analytics — a Laravel-backed React application built across seven business modules.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+            <span class="chip">Laravel</span><span class="chip">PostgreSQL</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Challenges</h4>
+              <p>Automotive operations were split across CRM, sales, workshop and inventory tools:</p>
+              <ol>
+                <li>Customer, booking and workshop data lived in separate flows.</li>
+                <li>Sales, rental and service teams could not share a single customer view.</li>
+                <li>Packages, jobs and rewards were hard to keep consistent across modules.</li>
+                <li>Booking, notification and payment steps needed closer stakeholder alignment.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Core Functions</h4>
+              <ol>
+                <li><strong>CRM:</strong> Customer engagement, history and follow-up in one place.</li>
+                <li><strong>Sales &amp; Rental:</strong> Car sales and rental workflows across the catalog.</li>
+                <li><strong>Workshop Jobs:</strong> Service jobs, packages and workshop scheduling.</li>
+                <li><strong>Rewards:</strong> Loyalty catalog and reward tracking.</li>
+                <li><strong>Financing &amp; Analytics:</strong> Financing support and operational reporting.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <ol>
+                <li><strong>Multi-module UI:</strong> Built reusable React.js / Next.js / TypeScript components across CRM, sales, workshop and inventory.</li>
+                <li><strong>Laravel APIs:</strong> Integrated REST APIs so the seven business modules shared the same backend.</li>
+                <li><strong>Stakeholder workflows:</strong> Worked through booking, notification and payment flows with the business team.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ol>
+                <li><strong>One platform:</strong> CRM, sales, rental and workshop sat on a shared application instead of separate tools.</li>
+                <li><strong>Reusable UI:</strong> Common components kept the seven modules consistent.</li>
+                <li><strong>Clearer operations:</strong> Bookings, notifications and payments followed agreed workflows.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-category="operations">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M3 7l9-4 9 4"/><path d="M8 11v5M12 11v5M16 11v5"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Cable & Warehouse Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">An enterprise application for cable manufacturing and warehouse operations, covering inventory, factory production tracking, quality assurance, invoicing and a client portal for order tracking.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span><span class="chip">MySQL</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Challenges</h4>
+              <p>Cable manufacturing and warehouse work needed tighter control of drums, stock and client orders:</p>
+              <ol>
+                <li>Inventory and drum status were difficult to see across projects.</li>
+                <li>Factory production and quality checks were tracked in disconnected records.</li>
+                <li>Order and change-request handling depended on email and spreadsheets.</li>
+                <li>Clients had little self-service visibility into order progress.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Core Functions</h4>
+              <ol>
+                <li><strong>User &amp; Role Management:</strong> Access control for admin, operations and client users.</li>
+                <li><strong>Inventory &amp; Drums:</strong> Project inventory and cable drum tracking.</li>
+                <li><strong>Production &amp; QA:</strong> Factory production tracking and quality assurance.</li>
+                <li><strong>Orders &amp; Change Requests:</strong> Order workflows with change-request handling.</li>
+                <li><strong>Client Portal:</strong> Order tracking and account management for customers.</li>
+                <li><strong>Invoicing:</strong> Billing support tied to fulfilled orders.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <ol>
+                <li><strong>Admin modules:</strong> Delivered user/role, inventory, warehouse and production-tracking screens in React.js and Laravel.</li>
+                <li><strong>Warehouse operations:</strong> Connected drum summary, project inventory and production status.</li>
+                <li><strong>Client portal:</strong> Built a separate order-tracking and account experience for clients.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ol>
+                <li><strong>Stock visibility:</strong> Teams could see inventory and drum status by project.</li>
+                <li><strong>Controlled orders:</strong> Change requests moved through the system instead of ad-hoc messages.</li>
+                <li><strong>Client self-service:</strong> Customers could track orders without waiting on operations staff.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-category="operations">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="1"/><path d="M3 9h18"/><path d="M8 3v3M16 3v3"/><path d="M8 14l2 2 4-4"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">RET Tour Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">Digitized daily tour operations that previously ran on paper and spreadsheets — route planning, calendar-based job assignment, a driver mobile app and digital signature capture on completion.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
+            <span class="chip">MySQL</span><span class="chip">React Native</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Challenges</h4>
+              <p>Daily tour operations previously ran on paper and spreadsheets:</p>
+              <ol>
+                <li>Route planning and job assignment were slow to update during the day.</li>
+                <li>Drivers had no reliable mobile view of assigned jobs.</li>
+                <li>Completion proof depended on paper signatures.</li>
+                <li>Tours, trips and reports were hard to reconcile after the fact.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Core Functions</h4>
+              <ol>
+                <li><strong>Customer &amp; Driver Management:</strong> Master data for customers, drivers and assignments.</li>
+                <li><strong>Job &amp; Route Planning:</strong> Calendar-based job assignment and route planning.</li>
+                <li><strong>Driver Mobile App:</strong> Assigned jobs and navigation for drivers in the field.</li>
+                <li><strong>Digital Signatures:</strong> Capture completion proof on the job.</li>
+                <li><strong>Reporting:</strong> Tours, trips and completion reports for operations.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <ol>
+                <li><strong>Operations web app:</strong> Built customer, driver, job, route and schedule modules in React.js and Laravel.</li>
+                <li><strong>Driver app:</strong> Shipped a React Native app for assigned jobs and navigation.</li>
+                <li><strong>Completion flow:</strong> Added digital signature capture and trip reporting.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ol>
+                <li><strong>Digitized operations:</strong> Paper and spreadsheet planning moved into one system.</li>
+                <li><strong>Field visibility:</strong> Drivers could see and complete assigned jobs on mobile.</li>
+                <li><strong>Audit-ready completions:</strong> Digital signatures and reports replaced paper proof.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-category="workforce">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1-3.5 4-5 7-5s6 1.5 7 5"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Egrade Workforce Management System</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">A workforce, payroll and time-management platform for Singapore operations — clock-in/out, shift rostering, leave, payroll and Singapore statutory compliance (CPF, SDL, foreign worker levy, IR8A), with a companion mobile app.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
+            <span class="chip">MySQL</span><span class="chip">React Native</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Challenges</h4>
+              <p>Singapore workforce operations needed attendance, rostering and statutory payroll in one place:</p>
+              <ol>
+                <li>Clock-in/out and leave requests were hard to collect consistently.</li>
+                <li>Shift rostering and project assignment were managed in separate files.</li>
+                <li>Payroll had to account for CPF, SDL, foreign worker levy and IR8A.</li>
+                <li>Bank and statutory exports required careful, repeatable file generation.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Core Functions</h4>
+              <ol>
+                <li><strong>Employee Master:</strong> Worker records and project assignment.</li>
+                <li><strong>Attendance &amp; Leave:</strong> Clock-in/out, weekly schedules and leave requests.</li>
+                <li><strong>Shift Rostering:</strong> Roster planning across projects and sites.</li>
+                <li><strong>Payroll:</strong> Calculation, posting setup and calculation history.</li>
+                <li><strong>Singapore Compliance:</strong> CPF, SDL, foreign worker levy and IR8A support.</li>
+                <li><strong>Exports:</strong> CPF/EZPay exports and GIRO bank files.</li>
+                <li><strong>Mobile App:</strong> Employee clock-in/out and leave on React Native.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <ol>
+                <li><strong>Workforce admin:</strong> Built employee, assignment, attendance and roster modules in React.js and Laravel.</li>
+                <li><strong>Payroll engine:</strong> Delivered payroll calculation plus CPF/EZPay and GIRO exports.</li>
+                <li><strong>Mobile companion:</strong> Shipped a React Native app for clock-in/out and leave.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ol>
+                <li><strong>One workforce system:</strong> Attendance, roster and payroll sat on the same platform.</li>
+                <li><strong>Statutory payroll:</strong> CPF, levy and IR8A handling moved into the product.</li>
+                <li><strong>Field capture:</strong> Employees could clock in and request leave from the mobile app.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-category="platforms">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">GoGo Logistics Platform</h3>
+            <span class="project-org">rgo47</span>
+          </div>
+          <p class="project-desc">A logistics management platform for order processing, packaging management and real-time order tracking, with push notifications delivered to customers and staff via Firebase Cloud Messaging.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
+            <span class="chip">Firebase</span><span class="chip">MySQL</span><span class="chip">MongoDB</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Challenges</h4>
+              <p>In the fast-paced world of e-commerce, timely and secure package delivery is crucial for customer satisfaction. GoGoSmiles faced the challenge of scaling its operations to meet the growing demands of online shoppers while ensuring seamless delivery experiences across diverse geographical locations.</p>
+            </div>
+            <div class="project-block">
+              <h4>Solution</h4>
+              <ul>
+                <li><strong>Nationwide Network Expansion:</strong> GoGoSmiles expanded its network by onboarding 60 distributors and enlisting over 8,000 agents nationwide, reaching customers in remote areas with prompt and reliable delivery.</li>
+                <li><strong>Streamlined Delivery Processes:</strong> Delivery processes were optimized to minimize transit times — from order processing to dispatch and final delivery.</li>
+                <li><strong>Secure Package Delivery:</strong> Advanced tracking systems and security protocols safeguarded shipments. Customers could track orders in real time and expect packages to arrive safely.</li>
+                <li><strong>Customer Experience Enhancement:</strong> Personalized interactions, real-time updates and responsive customer support kept every customer touchpoint seamless.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ul>
+                <li><strong>Improved Delivery Efficiency:</strong> Streamlined processes and a wider network reduced transit times so customers received packages promptly.</li>
+                <li><strong>Enhanced Security:</strong> Advanced tracking reduced incidents of loss or damage during transit and increased customer confidence.</li>
+                <li><strong>Elevated Customer Satisfaction:</strong> Reliable delivery and clearer updates increased loyalty and positive word-of-mouth.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-category="platforms">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9l8-5 8 5v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9z"/><path d="M9 20v-6h6v6"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Seller Center</h3>
+            <span class="project-org">rgo47</span>
+          </div>
+          <p class="project-desc">Efficiently managing an online shop is essential for sellers to maximize sales and streamline operations. The platform is designed to help sellers seamlessly manage their products, sales, and orders, while providing comprehensive reporting tools to analyze sales performance. Core features such as product listing, sales orders, and order management are optimized to deliver an exceptional seller experience.</p>
+          <div class="stack-row">
+            <span class="chip">Vue.js</span><span class="chip">Laravel</span><span class="chip">JavaScript</span>
+            <span class="chip">MySQL</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Objectives</h4>
+              <ul>
+                <li><strong>Streamline Seller Operations:</strong> Simplify product management, sales, and order processing.</li>
+                <li><strong>Enhance Reporting and Analytics:</strong> Provide insightful reports for better decision-making.</li>
+                <li><strong>Improve Seller Experience:</strong> Deliver a user-friendly platform that supports efficient shop management.</li>
+                <li><strong>Increase Seller Satisfaction and Retention:</strong> Ensure the platform meets the needs of sellers and improves overall satisfaction.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h4>Research and Analysis</h4>
+              <ul>
+                <li><strong>Seller Feedback:</strong> Conducted surveys and interviews with current and potential sellers to identify pain points and desired features.</li>
+                <li><strong>Market Analysis:</strong> Reviewed competitive platforms to understand industry standards and innovations.</li>
+                <li><strong>Usability Testing:</strong> Performed iterative testing with seller personas to refine features and usability.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <ul>
+                <li><strong>Dashboard:</strong> Overview of shop performance with key metrics (sales, orders, inventory) and customizable widgets for each seller.</li>
+                <li><strong>Product Listing Management:</strong> Interface for adding, editing, and deleting products, with bulk upload and update, image upload with automatic optimization, and category and tag management.</li>
+                <li><strong>Order Management:</strong> Real-time order notifications and status updates, processing orders, printing shipping labels, updating tracking information, and integration with GoGoSmiles for logistics.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h4>Sales and Reporting Tools</h4>
+              <ul>
+                <li><strong>Sales Order Management:</strong> Detailed order history with filters for date, product, and customer; automated invoicing and payment tracking; refund and return processing.</li>
+                <li><strong>Advanced Reporting:</strong> Sales reports on revenue, best-selling products, and customer demographics; inventory reports with stock levels, reorder alerts, and turnover rates; customizable reports for specific metrics and trends.</li>
+              </ul>
+            </div>
+            <div class="project-block">
+              <h4>Results and Benefits</h4>
+              <ul>
+                <li><strong>Increased Operational Efficiency:</strong> Sellers reported significant time savings in managing products, orders, and inventory.</li>
+                <li><strong>Improved Sales Performance:</strong> Enhanced reporting tools helped sellers make informed decisions, leading to increased sales and profitability.</li>
+                <li><strong>High Seller Satisfaction:</strong> Positive feedback highlighted the platform’s ease of use and comprehensive feature set.</li>
+                <li><strong>Seller Retention and Growth:</strong> Robust features and support resources contributed to higher seller retention rates and business growth.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project" data-category="platforms">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">ERP System</h3>
+            <span class="project-org">rgo47</span>
+          </div>
+          <p class="project-desc">An enterprise resource planning system to streamline business operations, spanning product management, order processing, inventory control, warehouse management, purchasing and finance workflows.</p>
+          <div class="stack-row">
+            <span class="chip">Vue.js</span><span class="chip">Laravel</span><span class="chip">JavaScript</span>
+            <span class="chip">Firebase</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Challenges</h4>
+              <p>Before implementing the rgo47 ecosystem, the company faced several challenges:</p>
+              <ol>
+                <li>Inefficient order processing leading to delays in fulfillment.</li>
+                <li>Manual errors in invoice generation affecting accuracy.</li>
+                <li>Lack of visibility into inventory levels resulting in stock-outs or overstock situations.</li>
+                <li>Poorly managed marketing campaigns impacting customer engagement and sales.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Core Functions</h4>
+              <ol>
+                <li><strong>Sale Order Management:</strong> Handles all aspects of order processing, from initial placement to final fulfillment, keeping the transaction flow efficient and reducing delays.</li>
+                <li><strong>Sale Invoice Management:</strong> Automated invoice generation and processing to reduce manual errors and improve accuracy.</li>
+                <li><strong>Campaign Management:</strong> Planning, execution and tracking of marketing campaigns to support customer engagement and sales.</li>
+                <li><strong>Inventory Management:</strong> Real-time tracking of inventory levels to keep stock available without overstocking.</li>
+                <li><strong>Product Management:</strong> Listings, categorization, updates and pricing so the catalog stays accurate.</li>
+                <li><strong>Reporting Functions:</strong> Reporting on sales performance, inventory status and campaign effectiveness.</li>
+                <li><strong>Customer Communication:</strong> Automated notifications at each stage of the order to keep customers informed.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <p>rgo47 embarked on a comprehensive revamp of their e-commerce operations, concentrating on the following key areas:</p>
+              <ol>
+                <li><strong>Core Functions Integration:</strong> Modules for sale order, invoice, campaign, inventory and product management formed the backbone of the ecosystem.</li>
+                <li><strong>Order Management Enhancement:</strong> Automated order verification, payment processing and customer notifications to shorten the order journey.</li>
+                <li><strong>Warehouse Optimization:</strong> Real-time inventory tracking and streamlined storage, picking, packing and shipping.</li>
+                <li><strong>Dynamic UI Management:</strong> A customizable, responsive Vue.js interface for a consistent experience across devices, with Laravel APIs, Firebase messaging, MySQL, MongoDB and Redis.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ol>
+                <li><strong>Operational Excellence:</strong> Manual interventions decreased, reducing error rates and improving efficiency.</li>
+                <li><strong>Elevated Customer Satisfaction:</strong> Timely order processing, accurate invoicing and clearer communication through the customer journey.</li>
+                <li><strong>Scalability and Adaptability:</strong> A flexible architecture that could grow with the business and changing market demands.</li>
+                <li><strong>Data-Driven Insights:</strong> Reporting and analytics that supported ongoing improvement and optimization.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
