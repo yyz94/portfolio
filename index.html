@@ -461,16 +461,16 @@
             <h3 class="project-title">Fleet Management System</h3>
             <span class="project-org">MajuTech Pte. Ltd.</span>
           </div>
-          <p class="project-desc">A vehicle tracking and fleet operations platform covering trip management, geofencing, reporting and notifications, built on a React.js frontend integrated with an ASP.NET backend.</p>
+          <p class="project-desc">A GPS-based fleet management platform supporting live vehicle tracking, trip management, geofencing, reporting and notifications. The system serves 300+ companies, each with a maximum of 20 vehicles, and shows real-time location for every vehicle according to that company's access.</p>
           <div class="stack-row">
-            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+            <span class="chip">React.js</span><span class="chip">TypeScript</span>
             <span class="chip">REST API</span><span class="chip">ASP.NET</span><span class="chip">MS SQL</span>
           </div>
           <div class="project-details">
             <div class="project-block">
               <h4>Core Functions</h4>
               <ol>
-                <li><strong>Live Tracking:</strong> Map and list views of vehicles with current GPS status.</li>
+                <li><strong>Live Tracking:</strong> Map and list views of vehicles with current GPS status, scoped so each company only sees its own fleet.</li>
                 <li><strong>Trip Management:</strong> Create, monitor and play back trips from start to completion.</li>
                 <li><strong>Geofencing:</strong> Zone alerts when vehicles enter or leave defined areas.</li>
                 <li><strong>Reporting:</strong> Operational reports on trips, events and vehicle activity.</li>
@@ -480,17 +480,25 @@
             <div class="project-block">
               <h4>Implementation</h4>
               <ol>
-                <li><strong>React frontend:</strong> Built reusable tracking, trip and geofence UI on React.js, Next.js and TypeScript.</li>
-                <li><strong>API integration:</strong> Connected the interface to an ASP.NET backend and MS SQL data.</li>
-                <li><strong>Operations workflows:</strong> Shipped live view, trip playback, geofencing, reporting and notifications as one product.</li>
+                <li><strong>React frontend:</strong> Developed reusable components for live tracking, trip management, geofencing, reporting and notifications using React.js and TypeScript.</li>
+                <li><strong>API integration and live tracking:</strong> Integrated REST APIs with the ASP.NET backend and implemented periodic polling to retrieve updated vehicle locations and display them on an interactive map.</li>
+                <li><strong>Map rendering and performance:</strong> Optimized React components with React.memo to reduce unnecessary re-renders. Reused existing vehicle markers and updated their positions as new location data arrived.</li>
+                <li><strong>Operations workflows:</strong> Integrated live tracking, trip playback, geofencing, reporting and notifications into a unified fleet management interface.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Technical Challenge &amp; Solution</h4>
+              <ol>
+                <li><strong>Challenge:</strong> Maintaining a responsive dashboard while showing real-time GPS locations for all vehicles across 300+ companies, with each company limited to 20 vehicles and a different access scope.</li>
+                <li><strong>Solution:</strong> Reduced unnecessary React component rendering through memoization and optimized map updates by changing existing marker positions instead of recreating markers after each polling response.</li>
               </ol>
             </div>
             <div class="project-block">
               <h4>Results</h4>
               <ol>
-                <li><strong>Real-time visibility:</strong> Operations could see vehicle and trip status without switching tools.</li>
-                <li><strong>Faster exception handling:</strong> Geofence and event alerts reduced delayed responses.</li>
-                <li><strong>Less manual reporting:</strong> Trip history and reports were available from the same system.</li>
+                <li>Improved dashboard responsiveness by reducing unnecessary React rendering and map operations.</li>
+                <li>Provided centralized access to live vehicle status, trip history, geofencing alerts and operational reports, with company-specific access so each company only sees its own vehicles.</li>
+                <li>Supported 300+ companies on the platform, with a maximum of 20 vehicles per company and real-time location for every vehicle.</li>
               </ol>
             </div>
           </div>
