@@ -8,7 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FAF9F6;
+    --paper:#FFFFFF;
+    --bg:#FAF9F6;
     --paper-dim:#EDEBE7;
     --ink:#1F1F1F;
     --ink-soft:#3D3D3D;
@@ -25,7 +26,7 @@
   html{scroll-behavior:smooth;}
   body{
     background:
-      linear-gradient(var(--paper) 0 0),
+      linear-gradient(var(--bg) 0 0),
       repeating-linear-gradient(0deg, transparent 0 39px, rgba(41,41,41,0.045) 39px 40px),
       repeating-linear-gradient(90deg, transparent 0 39px, rgba(41,41,41,0.045) 39px 40px);
     color:var(--ink);
@@ -45,7 +46,7 @@
   /* ===== NAV ===== */
   header.site{
     position:sticky; top:0; z-index:50;
-    background:rgba(250,249,246,0.92);
+    background:rgba(255,255,255,0.92);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
   }
@@ -304,7 +305,7 @@
   .project-icon{background:var(--paper);}
   .carousel{border-color:rgba(41,41,41,.18); box-shadow:3px 3px 0 rgba(41,41,41,.08);}
   .filter-bar{margin:4px 0 28px;}
-  .filter-btn{background:rgba(250,249,246,.7);}
+  .filter-btn{background:rgba(255,255,255,.7);}
   #skills,#experience{background:var(--paper);}
   @media (max-width:720px){section.hero{padding:76px 0 80px;} section.hero::after{right:18px;} .hero-grid{grid-template-columns:1fr; gap:40px;} .project{padding:22px 16px 26px; grid-template-columns:1fr; gap:18px;} .project:first-child{padding-top:22px;} .project-icon{width:44px;}}
 </style>
@@ -333,8 +334,8 @@
         <div class="hero-tag"><span class="dot"></span>Singapore · open to full-stack roles</div>
         <h1 class="hero-role">Full Stack Developer</h1>
         <div class="about-body">
-          <p>I'm a Full Stack Developer with 8+ years of experience building production web applications and enterprise systems across GPS tracking, logistics, automotive, workforce, and eCommerce platforms. My current focus is on React.js, Next.js, JavaScript, and TypeScript on the frontend, with PHP/Laravel, RESTful APIs, and AWS deployment on the backend and infrastructure side.</p>
-          <p>I've led development on multi-module platforms covering fleet operations, CRM, warehouse workflows, payroll, and real-time tracking systems, working closely with designers, backend engineers, and stakeholders to translate operational needs into reliable software. I also mentor junior developers, conduct code reviews, and help drive delivery across teams and projects.</p>
+          <p>Results-driven Senior Software Engineer with 10+ years of experience in developing and deploying scalable web applications and enterprise systems. Skilled in React.js, Next.js, TypeScript, PHP/Laravel, REST API integration, database management, and AWS. Experienced in building solutions for fleet management, logistics, automotive, CRM, workforce management, and eCommerce platforms.</p>
+          <p>Proven ability to deliver reliable, maintainable software and improve business workflows. Familiar with Vue.js, .NET Core, ASP.NET and Node.js (Express.js), with a strong willingness to learn new technologies and adapt to evolving business needs.</p>
         </div>
         <div class="hero-ctas">
           <a class="btn btn-solid" href="#projects">View projects</a>
@@ -343,7 +344,7 @@
         </div>
       </div>
       <div class="spec-list">
-        <div class="spec-row"><span class="k">Experience</span><span class="v">8+ years</span></div>
+        <div class="spec-row"><span class="k">Experience</span><span class="v">10+ years</span></div>
         <div class="spec-row"><span class="k">Based in</span><span class="v">Singapore</span></div>
         <div class="spec-row"><span class="k">Focus</span><span class="v">React.js / Next.js / JavaScript / TypeScript / Laravel</span></div>
         <div class="spec-row"><span class="k">AWS</span><span class="v">EC2 / S3 / RDS / CloudFront</span></div>
@@ -368,7 +369,8 @@
       <div class="skill-row">
         <div class="skill-cat">Backend</div>
         <div class="chips">
-          <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">RESTful APIs</span>
+          <span class="chip">PHP (Laravel, CodeIgniter)</span><span class="chip">Node.js (Express.js)</span>
+          <span class="chip">RESTful APIs</span>
           <span class="chip">ASP.NET</span><span class="chip">API Integration</span>
         </div>
       </div>
@@ -457,6 +459,53 @@
         </div>
       </div>
 
+      <div class="project" data-category="operations">
+        <div class="project-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M7.7 16.4C9.5 14 11 11 12 8.5S15.2 5 16.4 4.6"/><circle cx="12" cy="12" r="1.5"/></svg>
+        </div>
+        <div>
+          <div class="project-head">
+            <h3 class="project-title">Route Optimization</h3>
+            <span class="project-org">MajuTech Pte. Ltd.</span>
+          </div>
+          <p class="project-desc">A routing module on the GPS fleet platform that takes stop addresses, calculates the nearest route based on those addresses, and shows the optimized path on the map with live vehicle progress.</p>
+          <div class="stack-row">
+            <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+            <span class="chip">REST API</span><span class="chip">ASP.NET</span><span class="chip">MS SQL</span>
+          </div>
+          <div class="project-details">
+            <div class="project-block">
+              <h4>Core Functions</h4>
+              <ol>
+                <li><strong>Address-based stops:</strong> Enter start, stop and destination addresses to build a route.</li>
+                <li><strong>Nearest route calculation:</strong> Calculate the nearest route from the entered addresses by reordering stops to reduce travel distance and time.</li>
+                <li><strong>Vehicle and driver assignment:</strong> Assign a vehicle and driver to a planned route.</li>
+                <li><strong>Map visualization:</strong> Draw the optimized path and stop markers on an interactive map.</li>
+                <li><strong>Live progress:</strong> Show the vehicle's current GPS position against the planned route.</li>
+                <li><strong>Re-optimization:</strong> Recalculate the route when stops are added, removed or reordered.</li>
+                <li><strong>ETAs and distance:</strong> Show estimated arrival times and total distance for operations teams.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Implementation</h4>
+              <ol>
+                <li><strong>React frontend:</strong> Built route planning, stop lists and map views with React.js, Next.js and TypeScript.</li>
+                <li><strong>API integration:</strong> Sent stop addresses to the ASP.NET backend so it could geocode them and return the nearest route sequence through REST APIs.</li>
+                <li><strong>Map updates:</strong> Rendered the planned polyline and reused vehicle markers as live GPS positions arrived, consistent with the fleet tracking dashboard.</li>
+              </ol>
+            </div>
+            <div class="project-block">
+              <h4>Results</h4>
+              <ol>
+                <li>Operations could plan and dispatch routes from the same fleet interface instead of building paths by hand.</li>
+                <li>The nearest route was calculated from entered addresses instead of operators sequencing stops by hand.</li>
+                <li>Teams could watch live vehicle progress against the planned route, with company-specific access to their own fleet.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="project" data-category="platforms">
         <div class="project-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l2-6h14l2 6"/><path d="M5 12h14v6H5z"/><circle cx="8" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg>
@@ -466,10 +515,11 @@
             <h3 class="project-title">MTM Automotive Platform</h3>
             <span class="project-org">MajuTech Pte. Ltd.</span>
           </div>
-          <p class="project-desc">A CRM and automotive platform spanning customer engagement, eCommerce, car sales and rental, workshop service, financing and analytics — a Laravel-backed React application built across seven business modules.</p>
+          <p class="project-desc">A CRM and automotive platform spanning customer engagement, eCommerce, car sales and rental, workshop service, financing and analytics — with push notifications, WhatsApp messages, an OpenAI chatbot that suggests vehicles, and HitPay for payments.</p>
           <div class="stack-row">
             <span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
             <span class="chip">Laravel</span><span class="chip">PostgreSQL</span>
+            <span class="chip">OpenAI</span><span class="chip">HitPay</span><span class="chip">WhatsApp</span>
           </div>
           <div class="project-details">
             <div class="project-block">
@@ -480,6 +530,7 @@
                 <li>Sales, rental and service teams could not share a single customer view.</li>
                 <li>Packages, jobs and rewards were hard to keep consistent across modules.</li>
                 <li>Booking, notification and payment steps needed closer stakeholder alignment.</li>
+                <li>Customers needed faster updates and help choosing a vehicle without waiting on staff.</li>
               </ol>
             </div>
             <div class="project-block">
@@ -490,6 +541,9 @@
                 <li><strong>Workshop Jobs:</strong> Service jobs, packages and workshop scheduling.</li>
                 <li><strong>Rewards:</strong> Loyalty catalog and reward tracking.</li>
                 <li><strong>Financing &amp; Analytics:</strong> Financing support and operational reporting.</li>
+                <li><strong>Push &amp; WhatsApp:</strong> Booking, job and customer updates sent by push notification and WhatsApp.</li>
+                <li><strong>AI chatbot:</strong> OpenAI-powered chat that suggests vehicles from the catalog.</li>
+                <li><strong>HitPay payments:</strong> Online payment collection through HitPay.</li>
               </ol>
             </div>
             <div class="project-block">
@@ -497,15 +551,18 @@
               <ol>
                 <li><strong>Multi-module UI:</strong> Built reusable React.js / Next.js / TypeScript components across CRM, sales, workshop and inventory.</li>
                 <li><strong>Laravel APIs:</strong> Integrated REST APIs so the seven business modules shared the same backend.</li>
-                <li><strong>Stakeholder workflows:</strong> Worked through booking, notification and payment flows with the business team.</li>
+                <li><strong>Messaging:</strong> Wired push notifications and WhatsApp messages into booking and workshop flows.</li>
+                <li><strong>OpenAI chatbot:</strong> Integrated OpenAI so the chatbot could suggest vehicles based on customer needs.</li>
+                <li><strong>HitPay:</strong> Connected HitPay so payments could be collected inside the platform.</li>
               </ol>
             </div>
             <div class="project-block">
               <h4>Results</h4>
               <ol>
                 <li><strong>One platform:</strong> CRM, sales, rental and workshop sat on a shared application instead of separate tools.</li>
-                <li><strong>Reusable UI:</strong> Common components kept the seven modules consistent.</li>
-                <li><strong>Clearer operations:</strong> Bookings, notifications and payments followed agreed workflows.</li>
+                <li><strong>Faster customer updates:</strong> Push and WhatsApp messages kept bookings and jobs visible without calling operations.</li>
+                <li><strong>Vehicle suggestions:</strong> The OpenAI chatbot helped customers find a suitable vehicle from the catalog.</li>
+                <li><strong>In-app payments:</strong> HitPay handled payment collection in the same workflow.</li>
               </ol>
             </div>
           </div>
@@ -576,10 +633,10 @@
             <h3 class="project-title">RET Tour Management System</h3>
             <span class="project-org">MajuTech Pte. Ltd.</span>
           </div>
-          <p class="project-desc">Digitized daily tour operations that previously ran on paper and spreadsheets — route planning, calendar-based job assignment, a driver mobile app and digital signature capture on completion.</p>
+          <p class="project-desc">Digitized daily tour operations that previously ran on paper and spreadsheets — route planning, calendar-based job assignment, a driver mobile app, digital signature capture on completion, and WhatsApp notifications for job updates.</p>
           <div class="stack-row">
             <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
-            <span class="chip">MySQL</span><span class="chip">React Native</span>
+            <span class="chip">MySQL</span><span class="chip">React Native</span><span class="chip">WhatsApp</span>
           </div>
           <div class="project-details">
             <div class="project-block">
@@ -600,6 +657,7 @@
                 <li><strong>Driver Mobile App:</strong> Assigned jobs and navigation for drivers in the field.</li>
                 <li><strong>Digital Signatures:</strong> Capture completion proof on the job.</li>
                 <li><strong>Reporting:</strong> Tours, trips and completion reports for operations.</li>
+                <li><strong>WhatsApp notifications:</strong> Job assignment, schedule changes and completion updates sent on WhatsApp.</li>
               </ol>
             </div>
             <div class="project-block">
@@ -608,6 +666,7 @@
                 <li><strong>Operations web app:</strong> Built customer, driver, job, route and schedule modules in React.js and Laravel.</li>
                 <li><strong>Driver app:</strong> Shipped a React Native app for assigned jobs and navigation.</li>
                 <li><strong>Completion flow:</strong> Added digital signature capture and trip reporting.</li>
+                <li><strong>WhatsApp:</strong> Sent job and schedule notifications to drivers and customers on WhatsApp.</li>
               </ol>
             </div>
             <div class="project-block">
@@ -615,6 +674,7 @@
               <ol>
                 <li><strong>Digitized operations:</strong> Paper and spreadsheet planning moved into one system.</li>
                 <li><strong>Field visibility:</strong> Drivers could see and complete assigned jobs on mobile.</li>
+                <li><strong>Faster job updates:</strong> WhatsApp notifications reached drivers and customers when assignments changed.</li>
                 <li><strong>Audit-ready completions:</strong> Digital signatures and reports replaced paper proof.</li>
               </ol>
             </div>
@@ -631,10 +691,10 @@
             <h3 class="project-title">Egrade Workforce Management System</h3>
             <span class="project-org">MajuTech Pte. Ltd.</span>
           </div>
-          <p class="project-desc">A workforce, payroll and time-management platform for Singapore operations — clock-in/out, shift rostering, leave, payroll and Singapore statutory compliance (CPF, SDL, foreign worker levy, IR8A), with a companion mobile app.</p>
+          <p class="project-desc">A workforce, payroll and time-management platform for Singapore operations — clock-in/out, shift rostering, leave, payroll and Singapore statutory compliance (CPF, SDL, foreign worker levy, IR8A), with a companion mobile app and WhatsApp notifications.</p>
           <div class="stack-row">
             <span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">Laravel</span>
-            <span class="chip">MySQL</span><span class="chip">React Native</span>
+            <span class="chip">MySQL</span><span class="chip">React Native</span><span class="chip">WhatsApp</span>
           </div>
           <div class="project-details">
             <div class="project-block">
@@ -657,6 +717,7 @@
                 <li><strong>Singapore Compliance:</strong> CPF, SDL, foreign worker levy and IR8A support.</li>
                 <li><strong>Exports:</strong> CPF/EZPay exports and GIRO bank files.</li>
                 <li><strong>Mobile App:</strong> Employee clock-in/out and leave on React Native.</li>
+                <li><strong>WhatsApp notifications:</strong> Roster, leave and attendance updates sent to employees on WhatsApp.</li>
               </ol>
             </div>
             <div class="project-block">
@@ -665,6 +726,7 @@
                 <li><strong>Workforce admin:</strong> Built employee, assignment, attendance and roster modules in React.js and Laravel.</li>
                 <li><strong>Payroll engine:</strong> Delivered payroll calculation plus CPF/EZPay and GIRO exports.</li>
                 <li><strong>Mobile companion:</strong> Shipped a React Native app for clock-in/out and leave.</li>
+                <li><strong>WhatsApp:</strong> Sent roster, leave and attendance notifications to employees on WhatsApp.</li>
               </ol>
             </div>
             <div class="project-block">
@@ -673,6 +735,7 @@
                 <li><strong>One workforce system:</strong> Attendance, roster and payroll sat on the same platform.</li>
                 <li><strong>Statutory payroll:</strong> CPF, levy and IR8A handling moved into the product.</li>
                 <li><strong>Field capture:</strong> Employees could clock in and request leave from the mobile app.</li>
+                <li><strong>WhatsApp updates:</strong> Staff received roster, leave and attendance notices without relying only on the app.</li>
               </ol>
             </div>
           </div>
@@ -895,11 +958,11 @@
     <div class="wrap contact-inner">
       <div class="contact-copy">
         <h2 class="contact-title">I'm looking for my next role in Singapore.</h2>
-        <p class="contact-lead">The quickest way to reach me is by email or LinkedIn.</p>
+        <p class="contact-lead">The quickest way to reach me is by WhatsApp or email.</p>
       </div>
       <div class="contact-links">
+        <a href="https://wa.me/6583814010" target="_blank" rel="noopener">WhatsApp · +65 8381 4010</a>
         <a href="mailto:yuyuzin.ucsy@gmail.com">yuyuzin.ucsy@gmail.com</a>
-        <a href="tel:+6583814010">+65 8381 4010</a>
         <a href="https://www.linkedin.com/in/yuyuzin" target="_blank" rel="noopener">linkedin.com/in/yuyuzin</a>
       </div>
     </div>
